@@ -1,3 +1,5 @@
-FROM andrius/asterisk:latest
+FROM frank5/asterisk-16
 
-RUN apk add asterisk-srtp
+WORKDIR /etc/asterisk
+
+CMD ["asterisk", "-vvvvvvdddddgc"]
