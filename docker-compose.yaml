@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  asterisk:
+    image: andrius/asterisk:latest
+    volumes:
+      - ./asterisk:/etc/asterisk
+    ports:
+      - 8088:8088
