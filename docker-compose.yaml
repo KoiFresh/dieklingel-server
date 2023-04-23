@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   asterisk:
-    image: andrius/asterisk:latest
+    build: .
     volumes:
       - ./asterisk:/etc/asterisk
     ports:

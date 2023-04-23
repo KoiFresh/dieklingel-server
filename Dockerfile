@@ -1,6 +1,3 @@
-FROM alpine:latest
-RUN apk add --no-cache asterisk
+FROM andrius/asterisk:latest
 
-ENTRYPOINT ["tail", "-F", "/dev/null"]
-
-# ENTRYPOINT ["asterisk"]
+RUN apk add asterisk-srtp
