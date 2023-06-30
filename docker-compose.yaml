@@ -1,14 +1,10 @@
 version: '3.9'
 
 services:
-  asterisk:
-    # build: .
-    image: frank5/asterisk-16
-    volumes:
-      - ./asterisk:/etc/asterisk
+  mosquitto:
+    image: eclipse-mosquitto
     ports:
-      - 8088:8088/tcp
-      - 8089:8089/tcp
-      - 5060:5060/udp
-      - 5060:5060/tcp
-      - 30000-30100:30000-30100/udp
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
