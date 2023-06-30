@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js"></script>
+	<script defer src="index.js"></script>
+</head>
+
+<body>
+	<div>
+		<input id="username" type="text" placeholder="username" />
+		<input id="password" type="password" placeholder="password" />
+		<input id="uri" type="text" placeholder="uri" value="ws://127.0.0.1:9001/" />
+		<button onclick="connect(uri.value, username.value, password.value)">Connect</button>
+		<button onclick="disconnect()">Disconnect</button>
+	</div>
+
+	<br />
+
+	<div id="tool" style="visibility:hidden;">
+		<select onchange="insert(value)">
+			<option value="">empty</option>
+			<optgroup label="Client">
+				<option value="createClient">createClient</option>
+				<option value="deleteClient">deleteClient</option>
+				<option value="disableClient">disableClient</option>
+				<option value="enableClient">enableClient</option>
+				<option value="setClientPassword">setClientPassword</option>
+				<option value="addClientRole">addClientRole</option>
+				<option value="removeClientRole">removeClientRole</option>
+				<option value="getClient">getClient</option>
+				<option value="listClients">listClients</option>
+			</optgroup>
+		</select>
+
+		<button onclick="send()">Send Payload</button>
+		<br />
+
+		<span>Payload</span>
+		<textarea id="send" style="width: 100%; height: 2rem;"></textarea>
+		<span>Received</span>
+		<textarea id="received" style="width: 100%; height: 2rem;" readonly></textarea>
+	</div>
+</body>
+
+</html>

@@ -8,3 +8,10 @@ services:
       - 9001:9001
     volumes:
       - ./mosquitto/config:/mosquitto/config
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes: 
+      - ./nginx/etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/usr/share/nginx/html:/usr/share/nginx/html
