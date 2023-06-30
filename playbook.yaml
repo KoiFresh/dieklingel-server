@@ -1,0 +1,4 @@
+- name: DevOps Ansible
+  hosts: all
+  roles:
+    - mosquitto

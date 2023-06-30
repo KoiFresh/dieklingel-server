@@ -1,0 +1,31 @@
+- name: Installing mosquitto
+  become: true
+  package:
+    name: mosquitto
+    state: present
+
+- name: Copy mosquitto.conf file
+  become: true
+  copy:
+    src: .
+    dest: /etc/mosquitto
+    mode: "0644"
+  notify:
+    - Restart mosquitto
+
+- name: Interpolate config files
+  become: true
+  ansible.builtin.shell:
+    chdir: /etc/mosquitto
+    cmd: |
+      export ARCH=$(uname -m)
+      export ADMIN_USERNAME={{ lookup('ansible.builtin.env', 'ADMIN_USERNAME') }}
+      export ADMIN_PASSWORD={{ lookup('ansible.builtin.env', 'ADMIN_PASSWORD') }}
+
+      CONTENT=$(envsubst < {{ item }})
+      echo "$CONTENT" > {{ item }}
+  loop:
+    - dynamic-security.json
+    - conf.d/mosquitto_dynamic_security.conf
+  notify:
+    - Restart mosquitto
