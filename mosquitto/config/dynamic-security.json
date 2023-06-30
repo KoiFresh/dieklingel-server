@@ -17,6 +17,17 @@
 			"password": "cTvWPaAuKnq9BzM+IbwiYn+63+l4KX/R10W2irmfkRwEOkx+60XTIqsGsHtzXff/pLfFfwFuSYNlz5nNMymZnA==",
 			"salt": "sYN6JQzhEt0x1rx7",
 			"iterations": 101
+		},
+		{
+			"username": "superuser",
+			"roles": [
+				{
+					"rolename": "superuser"
+				}
+			],
+			"password": "4hfraKJiVN3u6x3nVZGR+iSkgXoV1sMbSdi5mENd8fia2j8+uB0/Nd9AGIEVdpIguw9jyTyZ9EZ6GMpa9K+uCQ==",
+			"salt": "L0PFm3bRLCNHC6Jj",
+			"iterations": 101
 		}
 	],
 	"groups": [],
@@ -57,6 +68,35 @@
 				{
 					"acltype": "subscribePattern",
 					"topic": "$SYS/#",
+					"priority": 0,
+					"allow": true
+				},
+				{
+					"acltype": "subscribePattern",
+					"topic": "#",
+					"priority": 0,
+					"allow": true
+				},
+				{
+					"acltype": "unsubscribePattern",
+					"topic": "#",
+					"priority": 0,
+					"allow": true
+				}
+			]
+		},
+		{
+			"rolename": "superuser",
+			"acls": [
+				{
+					"acltype": "publishClientSend",
+					"topic": "#",
+					"priority": 0,
+					"allow": true
+				},
+				{
+					"acltype": "publishClientReceive",
+					"topic": "#",
 					"priority": 0,
 					"allow": true
 				},
