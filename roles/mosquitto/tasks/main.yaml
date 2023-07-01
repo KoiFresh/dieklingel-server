@@ -15,6 +15,7 @@
 
 - name: Interpolate config files
   become: true
+  register: template
   ansible.builtin.shell:
     chdir: /etc/mosquitto
     cmd: |
@@ -22,10 +23,19 @@
       export ADMIN_USERNAME={{ lookup('ansible.builtin.env', 'ADMIN_USERNAME') }}
       export ADMIN_PASSWORD={{ lookup('ansible.builtin.env', 'ADMIN_PASSWORD') }}
 
-      CONTENT=$(envsubst < {{ item }})
-      echo "$CONTENT" > {{ item }}
+      FILE="{{ item }}"
+
+      CONTENT=$(envsubst < $FILE)
+      OLD_CONTENT=$(cat "$FILE%.*" || echo "")
+
+      if [ "$CONTENT" != "$OLD_CONTENT" ]; then
+        echo "$CONTENT" > "${FILE%.*}"
+        echo "changed"
+      fi
   loop:
-    - dynamic-security.json
-    - conf.d/mosquitto_dynamic_security.conf
+    - dynamic-security.json.template
+    - conf.d/mosquitto_dynamic_security.conf.template
+  changed_when:
+    - '"changed" in template.stdout'
   notify:
     - Restart mosquitto
