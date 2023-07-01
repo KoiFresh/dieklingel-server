@@ -1,3 +1,4 @@
+# https://infosec.mozilla.org/guidelines/openssh#modern-openssh-67
 # Supported HostKey algorithms by order of preference.
 HostKey /etc/ssh/ssh_host_ed25519_key
 HostKey /etc/ssh/ssh_host_rsa_key

@@ -1,8 +1,8 @@
 - name: Copy ssh config file
   become: true
   copy:
-    src: 35-hardening.conf
-    dest: /etc/ssh/sshd_config.d/35-hardening.conf
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
     mode: "0600"
   notify:
     - Restart sshd
