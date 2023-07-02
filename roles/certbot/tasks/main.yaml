@@ -7,10 +7,10 @@
   ansible.builtin.cron:
     name: Renew certbot
     weekday: 0
-    job: certbot renew
+    job: certbot renew --post-hook "chmod -R 604 /etc/letsencrypt/live/server.dieklingel.com/*"
 
 - name: Create certificate for server.dieklingel.com
   become: true
   ansible.builtin.shell:
     cmd: |
-      certbot certonly --standalone --agree-tos  --noninteractive  -d server.dieklingel.com -m kai.mayer@dieklingel.com
+      certbot certonly --standalone --agree-tos  --noninteractive  -d server.dieklingel.com -m kai.mayer@dieklingel.com --post-hook "chmod -R 604 /etc/letsencrypt/live/server.dieklingel.com/*"
