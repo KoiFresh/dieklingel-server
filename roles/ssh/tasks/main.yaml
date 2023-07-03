@@ -6,3 +6,12 @@
     mode: "0600"
   notify:
     - Restart sshd
+
+- name: Copy ssh hardening config file
+  become: true
+  copy:
+    src: ssh-audit_hardening.conf
+    dest: /etc/ssh/sshd_config.d/ssh-audit_hardening.conf
+    mode: "0600"
+  notify:
+    - Restart sshd
