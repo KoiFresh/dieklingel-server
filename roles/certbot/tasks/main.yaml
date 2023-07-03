@@ -1,0 +1,24 @@
+- name: Install certbot
+  apt:
+    name: certbot
+
+- name: Copy cert copy file
+  become: true
+  copy:
+    src: copy-certs.sh
+    dest: /var/copy-certs.sh
+    mode: "0744"
+
+- name: Renew certbot
+  become: true
+  ansible.builtin.cron:
+    name: Renew certbot
+    weekday: 0
+    job: certbot renew && /var/copy-certs.sh
+
+- name: Create certificate for server.dieklingel.com
+  become: true
+  ansible.builtin.shell:
+    cmd: |
+      certbot certonly --standalone --agree-tos  --noninteractive  -d server.dieklingel.com -m kai.mayer@dieklingel.com
+      /var/copy-certs.sh

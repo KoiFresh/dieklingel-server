@@ -1,0 +1,6 @@
+- name: DevOps Ansible
+  hosts: all
+  roles:
+    - ssh
+    - certbot
+    - mosquitto
