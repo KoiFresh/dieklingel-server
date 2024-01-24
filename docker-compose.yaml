@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  flexisip:
+    build:
+      context: flexisip
+      dockerfile: Dockerfile
+    ports:
+      - "5060:5060"
+      - "5060:5060/udp"
