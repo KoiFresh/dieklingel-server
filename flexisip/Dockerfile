@@ -49,6 +49,6 @@ RUN cmake -S . -B build -G Ninja && \
 	cmake --build build && \
 	cmake --install build
 
-COPY flexisip.conf /usr/local/etc/flexisip/flexisip.conf
+COPY flexisip.conf.default /usr/local/etc/flexisip/flexisip.conf
 
 ENTRYPOINT [ "flexisip" ]

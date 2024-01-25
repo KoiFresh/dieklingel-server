@@ -8,3 +8,6 @@ services:
     ports:
       - "5060:5060"
       - "5060:5060/udp"
+    volumes:
+      - ./flexisip/flex.conf:/etc/flexisip/flexisip.conf
+      - ./flexisip/userdb:/etc/flexisip/userdb

@@ -1,0 +1,4 @@
+version:1
+
+user1@192.168.0.92 clrtxt:secret ;
+user2@192.168.0.92 clrtxt:secret ;
