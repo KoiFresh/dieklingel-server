@@ -5,11 +5,10 @@ services:
     build:
       context: flexisip
       dockerfile: Dockerfile
-    # This is neccessary, and only works on Linux, because Flexisip else uses SIP Via its internal IP 172.?.?.?:5060
-    network_mode: host
-    # ports:
-    #  - "5060:5060"
-    #  - "5060:5060/udp"
+    privileged: true
+    ports:
+      - "5060:5060"
+      - "5060:5060/udp"
     volumes:
       - ./flexisip/flexisip.conf:/etc/flexisip/flex.conf
       - ./flexisip/userdb:/etc/flexisip/userdb
