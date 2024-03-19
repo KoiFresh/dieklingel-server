@@ -12,4 +12,5 @@ services:
     volumes:
       - ./flexisip/flexisip.conf:/etc/flexisip/flex.conf
       - ./flexisip/userdb:/etc/flexisip/userdb
+      - ./flexisip/apn:/etc/flexisip/apn
     command: ["-c", "/etc/flexisip/flex.conf", "--debug"]
