@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  flexisip:
+    build:
+      context: flexisip
+      dockerfile: Dockerfile
+    privileged: true
+    ports:
+      - "5060:5060"
+      - "5060:5060/udp"
+    volumes:
+      - ./flexisip/flexisip.conf:/etc/flexisip/flex.conf
+      - ./flexisip/userdb:/etc/flexisip/userdb
+      - ./flexisip/apn:/etc/flexisip/apn
+    command: ["-c", "/etc/flexisip/flex.conf", "--debug"]

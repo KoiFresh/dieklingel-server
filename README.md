@@ -1,12 +1,13 @@
-# dieKlingel Server
+# 🔮 dieKlingel Server
 
-This is a sample config of the dieKlingel-Server
+In order for all the magic to happen, we needed a server. This repository provides 🐋 `docker compose` configurations for a SIP server, or in detail for the [flexisip server](https://gitlab.linphone.org/BC/public/flexisip). We mainly use this as developer reference, we do not recommend runnig this project as is in an production environment.
 
-Deploy:
+## 🪜 Dependencies
 
-```bash
-export ADMIN_USERNAME=<the dyn-sec admin username>
-export ADMIN_PASSWORD=<the dyn-sec admin password hash>
+To be able to run the server you need [docker](https://docs.docker.com/get-docker/) installed on your system. If you want to use the push notification feature you have to provide push certificates in [flexisip/apn](flexisip/apn)
 
-ansible-playbook -i inventory.yaml playbook.yaml --user="<user>" --key-file="<shh key>" --ask-become-pass
+## 🐋 Run the server
+
+```sh
+docker compose up
 ```

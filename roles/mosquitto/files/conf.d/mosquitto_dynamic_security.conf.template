@@ -1,2 +1,0 @@
-plugin /usr/lib/${ARCH}-linux-gnu/mosquitto_dynamic_security.so
-plugin_opt_config_file /etc/mosquitto/dynamic-security.json
